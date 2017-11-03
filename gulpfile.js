@@ -189,7 +189,7 @@ gulp.task( 'build', function(callback) {
  * Conducts the build process, then upload the zip.
  */
 gulp.task( 'release-sftp-upload-zip', function () {
-	return gulp.src( './_dist/' + slug + '.zip' )
+	return gulp.src( './dist/' + slug + '.zip' )
 	.pipe( sftp( {
 		host: 'sftp.pressftp.com',
 		auth: 'LoginDesignerSFTP',
