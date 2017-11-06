@@ -175,7 +175,7 @@ gulp.task( 'build-notification', function () {
  * Conducts the build process and notification.
  */
 gulp.task( 'build-process', function(callback) {
-	runSequence( 'clear', 'build-clean', [ 'images', 'build-translate' ], 'build-copy', 'build-variables', 'build-zip', 'build-clean-after-zip', 'build-notification',  callback);
+	runSequence( 'clear', 'build-clean', [ 'images', 'build-translate' ], 'build-copy', 'build-variables', 'build-zip', 'build-clean-after-zip',  callback);
 });
 
 // Command.
@@ -196,7 +196,7 @@ gulp.task( 'release-sftp-upload-zip', function () {
 		remotePath: '/wp-content/edd-live-downloads/'
 	}))
 
-	.pipe( notify( { message: 'The ' + packageName + ' theme zip files has been uploaded.', onLast: true } ) );
+	.pipe( notify( { message: 'The ' + packageName + ' zip has been uploaded.', onLast: true } ) );
 });
 
 // Open the download on logindesigner.com, to update the version number.
@@ -215,4 +215,3 @@ gulp.task( 'release-notification', function () {
 gulp.task( 'release', function( callback ) {
 	runSequence( 'build-process', [ 'release-sftp-upload-zip' ], 'release-edit-download-version-online', 'release-notification', callback);
 });
-
