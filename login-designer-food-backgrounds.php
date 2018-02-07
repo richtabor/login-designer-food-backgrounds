@@ -11,20 +11,20 @@
  * Requires at least: @@pkg.requires
  * Tested up to: @@pkg.tested_up_to
  *
- * @@pkg.name is free software: you can redistribute it and/or modify
+ * @@pkg.title is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
  * any later version.
  *
- * @@pkg.name is distributed in the hope that it will be useful,
+ * @@pkg.title is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with @@pkg.name. If not, see <http://www.gnu.org/licenses/>.
+ * along with @@pkg.title. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   @@pkg.name
+ * @package   @@pkg.title
  * @author    @@pkg.author
  * @license   @@pkg.license
  * @version   @@pkg.version
@@ -81,7 +81,7 @@ if ( ! class_exists( 'Login_Designer_Food_Backgrounds' ) ) :
 		 */
 		public static function instance() {
 			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Login_Designer_Food_Backgrounds ) ) {
-				self::$instance = new Login_Designer_Food_Backgrounds;
+				self::$instance = new Login_Designer_Food_Backgrounds();
 				self::$instance->constants();
 				self::$instance->actions();
 				self::$instance->load_textdomain();
@@ -167,7 +167,7 @@ if ( ! class_exists( 'Login_Designer_Food_Backgrounds' ) ) :
 		 */
 		public function food_backgrounds( $backgrounds ) {
 
-			$image_dir  = LOGIN_DESIGNER_FOOD_BACKGROUNDS_PLUGIN_URL . 'assets/images/';
+			$image_dir = LOGIN_DESIGNER_FOOD_BACKGROUNDS_PLUGIN_URL . 'assets/images/';
 
 			// Change the "winter-01" key and leave the background images in the plugin folder (at least for month or so).
 			$food_backgrounds = array(
@@ -322,19 +322,18 @@ if ( ! class_exists( 'Login_Designer_Food_Backgrounds' ) ) :
 			}
 
 			// Retrieve license information.
-			$handler 	= new Login_Designer_License_Handler();
-			$key 		= trim( $handler->key() );
-			$shop_url 	= esc_url( $handler->shop_url() );
-			$author 	= esc_attr( $handler->author() );
+			$handler  = new Login_Designer_License_Handler();
+			$key      = trim( $handler->key() );
+			$shop_url = esc_url( $handler->shop_url() );
+			$author   = esc_attr( $handler->author() );
 
 			$updater = new Login_Designer_Extension_Updater( $shop_url, __FILE__, array(
-					'version' 	=> self::$version,
-					'license' 	=> $key,
-					'author' 	=> $author,
-					'item_id' 	=> self::$id,
-					'beta'		=> false,
-				)
-			);
+				'version' => self::$version,
+				'license' => $key,
+				'author'  => $author,
+				'item_id' => self::$id,
+				'beta'    => false,
+			) );
 		}
 
 		/**
