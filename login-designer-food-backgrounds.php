@@ -171,26 +171,11 @@ if ( ! class_exists( 'Login_Designer_Food_Backgrounds' ) ) :
 
 			// Change the "winter-01" key and leave the background images in the plugin folder (at least for month or so).
 			$food_backgrounds = array(
-				'food-01' => array(
-					'title' => esc_html__( 'Food 01', '@@textdomain' ),
-					'image' => esc_url( $image_dir ) . 'food-01-sml.jpg',
-				),
-				'food-02' => array(
-					'title' => esc_html__( 'Food 02', '@@textdomain' ),
-					'image' => esc_url( $image_dir ) . 'food-02-sml.jpg',
-				),
-				'food-03' => array(
-					'title' => esc_html__( 'Food 03', '@@textdomain' ),
-					'image' => esc_url( $image_dir ) . 'food-03-sml.jpg',
-				),
-				'food-04' => array(
-					'title' => esc_html__( 'Food 04', '@@textdomain' ),
-					'image' => esc_url( $image_dir ) . 'food-04-sml.jpg',
-				),
-				'food-05' => array(
-					'title' => esc_html__( 'Food 05', '@@textdomain' ),
-					'image' => esc_url( $image_dir ) . 'food-05-sml.jpg',
-				),
+				'food-01' => esc_url( $image_dir ) . 'food-01-sml.jpg',
+				'food-02' => esc_url( $image_dir ) . 'food-02-sml.jpg',
+				'food-03' => esc_url( $image_dir ) . 'food-03-sml.jpg',
+				'food-04' => esc_url( $image_dir ) . 'food-04-sml.jpg',
+				'food-05' => esc_url( $image_dir ) . 'food-05-sml.jpg',
 			);
 
 			// Combine the two arrays.
@@ -327,13 +312,15 @@ if ( ! class_exists( 'Login_Designer_Food_Backgrounds' ) ) :
 			$shop_url = esc_url( $handler->shop_url() );
 			$author   = esc_attr( $handler->author() );
 
-			$updater = new Login_Designer_Extension_Updater( $shop_url, __FILE__, array(
-				'version' => self::$version,
-				'license' => $key,
-				'author'  => $author,
-				'item_id' => self::$id,
-				'beta'    => false,
-			) );
+			$updater = new Login_Designer_Extension_Updater(
+				$shop_url, __FILE__, array(
+					'version' => self::$version,
+					'license' => $key,
+					'author'  => $author,
+					'item_id' => self::$id,
+					'beta'    => false,
+				)
+			);
 		}
 
 		/**
